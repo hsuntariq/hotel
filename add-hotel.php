@@ -15,7 +15,7 @@
     if(isset($_SESSION['message'])){
         echo "
             <div class='flash text-light p-3 bg-dark position-fixed' style='top:0;right:0'>
-                <h5>Hotel Added Successfully</h5>
+                {$_SESSION['message']}
             </div>
         ";
     }
@@ -55,7 +55,7 @@
 
 
 <?php include 'boot_js.php';
-    session_unset();
+    unset($_SESSION['message']);
 ?>
 
 <script>

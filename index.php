@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,11 +14,30 @@
 
 <body>
 
-    <?php include 'navbar.php'?>
+    <?php include 'navbar.php';
+        if(isset($_SESSION['success'])){
+            echo "
+                <div class='flash position-fixed bg-success p-2 w-25' style='top:0;right:0;z-index:222'>
+                    {$_SESSION['success']}
+                </div>  
+            ";
+        }
+    ?>
     
 
-    <?php include 'boot_js.php'?>
 
+    <?php include 'boot_js.php';
+    unset($_SESSION['success']);
+?>
+
+<script>
+    let flash = document.querySelector('.flash');
+    setTimeout(()=>{
+        flash.style.transform = 'translateX(100%)'
+        flash.style.transition = 'all 0.6s'
+
+    },2000)
+</script>
 </body>
 
 </html>
